@@ -1,0 +1,19 @@
+body {
+    font-family: 'Lilita One', sans-serif;
+    padding: 3%;
+    text-align: center;
+    background-color: #FFBB4B;
+}
+
+h1 {
+    color: #FFBB4B;
+    display: inline-block;
+    padding: 3%;
+    background-color: #573600;
+    border-radius: 20px;
+}
+
+#oddish_picture {
+    margin-top: 8%;
+    width: 30%;
+}
