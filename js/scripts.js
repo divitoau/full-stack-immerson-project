@@ -21,18 +21,26 @@ let pokemonRepository = (function () {
             types: ['ice']
         }
     ]
-        function add(pokemon) {
+    function add(pokemon) {
+        if (typeof pokemon === 'object'/* && Object.keys(pokemon) === ['name', 'height', 'types']*/) {
             pokemonList.push(pokemon);
         }
-        function getAll() {
-            return pokemonList;
-        }
+    }
+    function getAll() {
+        return pokemonList;
+    }
     return {
         add,
         getAll
     }
 
 })()
+
+pokemonRepository.add({
+    name: 'Gurdurr',
+    height: 1.2,
+    types: ['fighting']
+})
 
 pokemonRepository.getAll().forEach(function (pokemon) {
     if (pokemon.height > 10) {
