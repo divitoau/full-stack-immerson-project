@@ -1,3 +1,12 @@
+/* 
+light green - #92cd4c
+medium green - #7fb748
+dark green - #578b49
+blue - #5a90cb 
+orange - #FFBB4B
+brown - #573600
+*/
+
 body {
     font-family: 'Lilita One', sans-serif;
     padding: 3%;
@@ -11,6 +20,30 @@ h1 {
     padding: 3%;
     background-color: #573600;
     border-radius: 20px;
+}
+
+ul {
+    list-style: none;
+    padding-inline-start: 0px;
+}
+
+li {
+    font-size: 24px;
+}
+
+.pokedex_button {
+    color: #573600;
+    margin-bottom: 6px;
+    background-color: #92cd4c;
+    border-radius: 8px;
+}
+
+.pokedex_button:hover {
+    background-color: #7fb748;
+}
+
+.pokedex_button:active {
+    background-color: #578b49;
 }
 
 #oddish_picture {
