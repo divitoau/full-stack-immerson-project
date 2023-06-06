@@ -29,19 +29,26 @@ let pokemonRepository = (function () {
     function getAll() {
         return pokemonList;
     }
+    function showDetails(pokemon) {
+        console.log(pokemon)
+    }
     function addListItem(pokemon) {
         let container = document.querySelector('.pokemon-list');
         let listItem = document.createElement('li');
         let button = document.createElement('button');
         button.innerText = pokemon.name;
         button.classList.add('pokedex_button');
+        button.addEventListener('click', function (event) {
+            showDetails(pokemon)
+        });
         listItem.appendChild(button);
         container.appendChild(listItem);
     }
     return {
         add,
         getAll,
-        addListItem
+        addListItem,
+        showDetails
     }
 
 })()
