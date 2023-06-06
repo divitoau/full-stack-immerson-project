@@ -36,6 +36,7 @@ li {
     margin-bottom: 6px;
     background-color: #92cd4c;
     border-radius: 8px;
+    padding: 4px 10px;
 }
 
 .pokedex_button:hover {
