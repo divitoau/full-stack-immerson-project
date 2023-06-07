@@ -1,26 +1,7 @@
 let pokemonRepository = (function () {
-    let pokemonList = [
-        {
-            name: 'Oddish',
-            height: .5,
-            types: ['grass', 'poison']
-        },
-        {
-            name: 'Steelix',
-            height: 9.2,
-            types: ['steel', 'ground']
-        },
-        {
-            name: 'Wailord',
-            height: 14.5,
-            types: ['water']
-        },
-        {
-            name: 'Regice',
-            height: 1.8,
-            types: ['ice']
-        }
-    ]
+    let pokemonList = [];
+
+    let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
     function add(pokemon) {
         if (typeof pokemon === 'object') {
             pokemonList.push(pokemon);
@@ -44,22 +25,34 @@ let pokemonRepository = (function () {
         listItem.appendChild(button);
         container.appendChild(listItem);
     }
+    function loadList() {
+        return fetch(apiUrl).then(function (response) {
+            return response.json();
+        }).then(function (json) {
+            json.results.forEach(function (item) {
+                let pokemon = {
+                    name: item.name,
+                    detailsUrl: item.url
+                };
+                add(pokemon);
+            });
+        }).catch(function (e) {
+            console.error(e);
+        })
+    }
     return {
         add,
         getAll,
+        loadList,
         addListItem,
         showDetails
-    }
+    };
 
-})()
+})();
 
-pokemonRepository.add({
-    name: 'Gurdurr',
-    height: 1.2,
-    types: ['fighting']
+pokemonRepository.loadList().then(function () {
+    pokemonRepository.getAll().forEach(function (pokemon) {
+        pokemonRepository.addListItem(pokemon);
+    })
 })
 
-pokemonRepository.getAll().forEach(function (pokemon) {
-    pokemonRepository.addListItem(pokemon);
-
-})
