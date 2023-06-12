@@ -19,7 +19,7 @@ let pokemonRepository = (function () {
         let container = document.querySelector('.pokemon-list');
         let listItem = document.createElement('li');
         let button = document.createElement('button');
-        button.innerText = capitalizeName (pokemon.name);
+        button.innerText = capitalizeName(pokemon.name);
         button.classList.add('pokedex_button');
         button.addEventListener('click', function () {
             showDetails(pokemon)
@@ -96,10 +96,10 @@ let modalDisplayProcedure = (function () {
         let imageElement = document.createElement('img');
         imageElement.src = imageUrl;
 
-        modal.appendChild(closeButtonElement);
         modal.appendChild(nameElement);
         modal.appendChild(heightElement);
         modal.appendChild(imageElement);
+        modal.appendChild(closeButtonElement);
         modalContainer.appendChild(modal);
 
         modalContainer.classList.add('is-visible');
