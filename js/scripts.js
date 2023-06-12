@@ -74,7 +74,7 @@ pokemonRepository.loadList().then(function () {
     })
 })
 
-let bigGuy = (function () {
+let modalDisplayProcedure = (function () {
     let modalContainer = document.querySelector('#modal-container');
     let closeButtonElement = document.createElement('button');
     closeButtonElement.classList.add('modal-close');
@@ -99,50 +99,10 @@ let bigGuy = (function () {
 
     function hideModal() {
         modalContainer.classList.remove('is-visible');
-        if (dialogPromiseReject) {
-            dialogPromiseReject();
-            dialogPromiseReject = null;
-        }
-    }
-
-    function showDialog(title, text) {
-        showModal(title, text);
-        let modal = modalContainer.querySelector('.modal');
-
-        let confirmButton = document.createElement('button');
-        confirmButton.classList.add('modal-confirm');
-        confirmButton.innerText = 'Confirm';
-
-        let cancelButton = document.createElement('button');
-        cancelButton.classList.add('modal-cancel');
-        cancelButton.innerText = 'Cancel';
-        modal.appendChild(confirmButton);
-        modal.appendChild(cancelButton);
-        confirmButton.focus();
-
-        return new Promise((resolve, reject) => {
-            cancelButton.addEventListener('click', () => {
-                hideModal();
-                reject();
-            });
-            confirmButton.addEventListener('click', () => {
-                dialogPromiseReject = null;
-                hideModal();
-                resolve();
-            });
-            dialogPromiseReject = reject;
-        });
     }
 
     document.querySelector('#show-modal').addEventListener('click', () => {
         showModal('Hi friend!', 'How are ya?');
-    });
-    document.querySelector('#show-dialog').addEventListener('click', () => {
-        showDialog('Confirm action', 'you sure bud?').then(function () {
-            alert('confirmed!');
-        }, () => {
-            alert('not confirmed');
-        });
     });
     closeButtonElement.addEventListener('click', hideModal);
     window.addEventListener('keydown', (e) => {
