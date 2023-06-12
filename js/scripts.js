@@ -11,18 +11,17 @@ let pokemonRepository = (function () {
     function getAll() {
         return pokemonList;
     }
-    function showDetails(pokemon) {
-        loadDetails(pokemon).then(function () {
-            console.log(pokemon);
-        });
+    function capitalizeName(name) {
+        return name.charAt(0).toUpperCase() + name.slice(1)
     }
+
     function addListItem(pokemon) {
         let container = document.querySelector('.pokemon-list');
         let listItem = document.createElement('li');
         let button = document.createElement('button');
-        button.innerText = pokemon.name;
+        button.innerText = capitalizeName (pokemon.name);
         button.classList.add('pokedex_button');
-        button.addEventListener('click', function (event) {
+        button.addEventListener('click', function () {
             showDetails(pokemon)
         });
         listItem.appendChild(button);
@@ -57,6 +56,12 @@ let pokemonRepository = (function () {
         });
     }
 
+    function showDetails(pokemon) {
+        loadDetails(pokemon).then(function () {
+            modalDisplayProcedure.showModal(capitalizeName(pokemon.name), pokemon.height, pokemon.imageUrl);
+        });
+    }
+
     return {
         add,
         getAll,
@@ -80,18 +85,21 @@ let modalDisplayProcedure = (function () {
     closeButtonElement.classList.add('modal-close');
     closeButtonElement.innerText = 'Close';
 
-    function showModal(title, text) {
+    function showModal(name, height, imageUrl) {
         modalContainer.innerHTML = '';
         let modal = document.createElement('div');
         modal.classList.add('modal');
-        let titleElement = document.createElement('h1');
-        titleElement.innerText = title
-        let contentElement = document.createElement('p');
-        contentElement.innerText = text;
+        let nameElement = document.createElement('h1');
+        nameElement.innerText = name;
+        let heightElement = document.createElement('p');
+        heightElement.innerText = 'Height: ' + height;
+        let imageElement = document.createElement('img');
+        imageElement.src = imageUrl;
 
         modal.appendChild(closeButtonElement);
-        modal.appendChild(titleElement);
-        modal.appendChild(contentElement);
+        modal.appendChild(nameElement);
+        modal.appendChild(heightElement);
+        modal.appendChild(imageElement);
         modalContainer.appendChild(modal);
 
         modalContainer.classList.add('is-visible');
@@ -101,9 +109,6 @@ let modalDisplayProcedure = (function () {
         modalContainer.classList.remove('is-visible');
     }
 
-    document.querySelector('#show-modal').addEventListener('click', () => {
-        showModal('Hi friend!', 'How are ya?');
-    });
     closeButtonElement.addEventListener('click', hideModal);
     window.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && modalContainer.classList.contains('is-visible')) {
@@ -116,4 +121,8 @@ let modalDisplayProcedure = (function () {
             hideModal();
         }
     })
+    return {
+        showModal,
+        hideModal
+    }
 }())

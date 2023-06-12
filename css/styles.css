@@ -78,7 +78,9 @@ button:active {
 
 .modal {
     margin: auto;
-    display: inline-block;
+    display: grid;
+    grid-template-columns: 1fr 1fr 50px;
+    grid-template-rows: 60px auto;
     box-sizing: border-box;
     background: #FFBB4B;
     padding: 15px;
@@ -89,8 +91,28 @@ button:active {
     border: .7rem solid #573600;
 }
 
+.modal > h1 {
+    height: fit-content;
+    width: fit-content;
+    grid-column: 1/2;
+    grid-row: 1/2;
+}
+
+.modal > p {
+    grid-column: 1/2;
+    grid-row: 2/3;
+}
+
+.modal > img {
+    height: 200px;
+    grid-column: 2/3;
+    grid-row: 1/3 ;
+
+}
+
 .modal-close {
-    float: right;
+    grid-column: 3 / 4;
+    grid-row: 1/2;
     -webkit-appearance: none;
     appearance: none;
     border: 0;
