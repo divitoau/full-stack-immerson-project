@@ -67,11 +67,12 @@ let pokemonRepository = (function () {
             let imageElement = $('<img class="modal-image" style="width:50%">');
             imageElement.attr('src', item.imageUrl);
             let heightElement = $('<p> Height: ' + item.height + '</p>');
-            let typesElement = $('<p> Types:' + item.types + '</p>');
+ //           let typesElement = $('<p> Types:' + item.types[0] + '</p>');
             modalTitle.append(nameElement);
-            modalBody.append(heightElement);
             modalBody.append(imageElement);
-            modalBody.append(typesElement);
+            modalBody.append(heightElement);
+ //           modalBody.append(typesElement);
+            console.log(typesElement)
         });
     }
     return {
