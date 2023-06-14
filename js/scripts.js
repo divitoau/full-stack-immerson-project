@@ -20,7 +20,7 @@ let pokemonRepository = (function () {
         let listItem = document.createElement('li');
         let button = document.createElement('button');
         button.innerText = capitalizeName(pokemon.name);
-        button.classList.add('pokedex_button');
+        button.classList.add('pokedex_button', 'list-group-item', 'btn');
         button.addEventListener('click', function () {
             showDetails(pokemon)
         });
