@@ -42,7 +42,7 @@ let pokemonRepository = (function () {
         let container = document.querySelector('.pokemon-list');
         let listItem = document.createElement('li');
         let button = document.createElement('button');
-        listItem.classList.add('list-group-item');
+        listItem.classList.add('list-group-item', 'col-4');
         button.innerText = capitalizeName(pokemon.name);
         button.classList.add('btn');
         button.setAttribute('data-target', '#exampleModalCenter');
@@ -72,7 +72,7 @@ let pokemonRepository = (function () {
             modalBody.append(imageElement);
             modalBody.append(heightElement);
  //           modalBody.append(typesElement);
-            console.log(typesElement)
+ //           console.log(typesElement)
         });
     }
     return {
