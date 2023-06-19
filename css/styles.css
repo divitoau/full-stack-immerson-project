@@ -48,6 +48,12 @@ p {
     border-top-right-radius: 8px;
 }
 
+.list-group-item:last-child {
+    margin-bottom: 6px;
+    border-bottom-right-radius: 8px;
+    border-bottom-left-radius: 8px;
+}
+
 .list-group-item:hover {
     background-color: #7fb748;
 }
