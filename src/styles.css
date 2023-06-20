@@ -28,31 +28,32 @@ h5 {
 p {
     color: #573600;
 }
-.btn {
-    color: #573600;
-}
+
 .list-group {
     flex-direction: row;
 }
+
 .list-group-item {
+    background-color: #00000000;
+    border: none;
+}
+
+.btn {
     color: #573600;
     margin-bottom: 6px;
     background-color: #92cd4c;
     border-radius: 8px;
     border: .3rem solid #578b49;
     padding: 4px 10px;
-    position: relative;
-}
-.list-group-item:first-child {
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
+    width: 100%;
+    height: 110%;
 }
 
-.list-group-item:hover {
+.btn:hover {
     background-color: #7fb748;
 }
 
-.list-group-item:active {
+.btn:active {
     background-color: #578b49;
 }
 
